@@ -23,13 +23,12 @@ Airport.create(code: 'LAS')
 
 
 15.times do 
-  @a1 = Airport.all[rand(10)]
-  @a2 = Airport.all[rand(10)]
+  @a1 = Airport.all[rand(11)]
+  @a2 = Airport.all[rand(11)]
   @dt = Time.at(((Time.now + 10.days).to_f - Time.now.to_f)*rand + Time.now.to_f)
   @td = "#{1 + rand(10)}:#{rand(60)}"
   Flight.create(from_airport_id: @a1.id,
                 to_airport_id: @a2.id,
                 travel_duration: @td,
                 departure_time: @dt) if @a1 != @a2
-                     
 end

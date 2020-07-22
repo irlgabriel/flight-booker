@@ -1,0 +1,9 @@
+<h1 class="text-center text-primary mt-4 text-uppercase">Flights</h1>
+
+<div class="container">
+  <ul class="list-unstyled">
+    <% @flights.each do |flight| %>
+      <li class="my2"> <%= flight.code %> </li>
+
+    <% end %>
+</div>

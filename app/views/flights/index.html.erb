@@ -37,6 +37,7 @@
   <h1 class="text-center text-primary">Available Flights: </h1>
   <table class="table table-striped mx-auto text-center">
     <tr>
+      <th>ID</th>
       <th>FROM</th>
       <th>TO</th>
       <th>Departure Date</th>
@@ -45,6 +46,7 @@
     </tr>
     <% @available_flights.each do |flight| %>
     <tr>
+      <td><%= link_to "#{flight.id}", '' %></td>
       <td><%= flight.from_airport.code %></td>
       <td><%= flight.to_airport.code %></td>
       <td><%= flight.departure_time.strftime('%d/%m/%y') %>

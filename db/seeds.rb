@@ -22,10 +22,10 @@ Airport.create(code: 'SEA')
 Airport.create(code: 'LAS')
 
 
-265.times do 
+665.times do 
   @a1 = Airport.all[rand(11)]
   @a2 = Airport.all[rand(11)]
-  @dt = Time.at(((Time.now + 10.days).to_f - Time.now.to_f)*rand + Time.now.to_f)
+  @dt = Time.at(((Time.now + 25.days).to_f - (Time.now + 5.days).to_f)*rand + (Time.now + 5.days).to_f)
   @td = "#{rand(10)}:#{rand(60)}"
   Flight.create(from_airport_id: @a1.id,
                 to_airport_id: @a2.id,

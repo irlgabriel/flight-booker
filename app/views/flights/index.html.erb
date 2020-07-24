@@ -46,6 +46,7 @@
     </tr>
     <% @available_flights.each do |flight| %>
     <tr>
+      <%= form_with(url: "/bookings/new", method: "get")%>
       <td><%= link_to "#{flight.id}", '' %></td>
       <td><%= flight.from_airport.code %></td>
       <td><%= flight.to_airport.code %></td>

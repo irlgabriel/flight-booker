@@ -1,2 +1,59 @@
-<h1 class="text-uppercase text-primary text-center my-3">Flight-Booker</h1>
-<% byebug %>
+
+<div class="container mt-5 form-group">
+  <h2 class="text-center my-5">Search Flights</h2>
+  <%= form_with(url: "/flights", method: "get", local: true) do |f| %>
+  
+    <div class="form-group">
+      <%= f.label :to, class: "mr-4" %>
+      <%= f.collection_select(:from_airport_id, @airports, :id, :code) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :from %>
+      <%= f.collection_select(:to_airport_id, @airports, :id, :code) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :no_of_passengers, "Passengers" %>
+      <%= f.select(:passengers, [ [1,1], [2,2], [3,3], [4,4] ]) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :departure_date, "Departure Date" %>
+      <%= select_date(Time.now) %>
+
+    </div>
+
+    <div class="form-group">
+      <%= f.submit value: "Search", name: nil, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>
+
+<% if @available_flights.count >= 1 %>
+
+  <hr />
+
+  <h1 class="text-center text-primary">Available Flights: </h1>
+  <table class="table table-striped mx-auto text-center">
+    <tr>
+      <th>FROM</th>
+      <th>TO</th>
+      <th>Departure Date</th>
+      <th>Departure Hour</th>
+      <th>Flight Duration</th>
+    </tr>
+    <% @available_flights.each do |flight| %>
+    <tr>
+      <td><%= flight.from_airport.code %></td>
+      <td><%= flight.to_airport.code %></td>
+      <td><%= flight.departure_time.strftime('%d/%m/%y') %>
+      <td><%= flight.departure_time.strftime('%H:%M')%></td>
+      <td><%= flight.travel_duration %></td>
+    </tr>
+    <% end
+    %>
+  </table>
+  <p><%= p params %></p>
+<% end %>

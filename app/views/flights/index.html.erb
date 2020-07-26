@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <h2 class="text-center my-5">Search Flights</h2>
   <%= form_with(url: "/flights", method: "get", local: true, class: "") do |f| %>
-  
+  <div class="form-group">
     <div class="form-group">
       <%= f.label :to, class: "mr-4" %>
       <%= f.collection_select(:from_airport_id, @airports, :id, :code) %>
@@ -26,7 +26,7 @@
     <div class="form-group">
       <%= f.submit value: "Search", name: nil, class: "btn btn-primary" %>
     </div>
-
+  </div>
   <% end %>
 </div>
 
@@ -54,6 +54,7 @@
       <td><%= flight.departure_time.strftime('%H:%M')%></td>
       <td><%= flight.travel_duration %></td>
       <%= f.hidden_field :flight_id , value: flight.id %>
+      <%= f.hidden_field :passengers, value: params[:passengers] %>
       <td><%= f.submit value: "Pick", name: nil, class: "btn btn-primary" %></td>
       <% end %>
     </tr>

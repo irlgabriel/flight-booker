@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id)
     @to = Airport.find(@flight.to_airport_id)
     @booking = @flight.bookings.new
+    @passengers = params[:passengers]
   end
 
   def create

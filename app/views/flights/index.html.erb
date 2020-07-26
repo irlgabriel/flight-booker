@@ -46,13 +46,16 @@
     </tr>
     <% @available_flights.each do |flight| %>
     <tr>
-      <%= form_with(url: "/bookings/new", method: "get")%>
-      <td><%= link_to "#{flight.id}", '' %></td>
+      <%= form_with url: "/bookings/new", method: "get", local: true do |f| %>
+
       <td><%= flight.from_airport.code %></td>
       <td><%= flight.to_airport.code %></td>
       <td><%= flight.departure_time.strftime('%d/%m/%y') %>
       <td><%= flight.departure_time.strftime('%H:%M')%></td>
       <td><%= flight.travel_duration %></td>
+      <%= f.hidden_field :flight_id , value: flight.id %>
+      <td><%= f.submit value: "Pick", name: nil, class: "btn btn-primary" %></td>
+      <% end %>
     </tr>
     <% end
     %>

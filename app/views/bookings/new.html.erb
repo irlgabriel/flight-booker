@@ -1,0 +1,27 @@
+
+<h1 class="text-center my-2">New Booking</h1>
+
+<div class="card mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h4 class="card-title">Odin Airways!</h4>
+    <h5 class="card-subtitle mb-2 text-muted">FROM: <strong><%= link_to @from.code, '' %></strong></h5>
+    <h5 class="card-subtitle text-muted">TO : <strong><%= link_to @to.code, '' %></strong></h5>
+  </div>
+</div>
+
+<h3 class="text-primary">Passenger Details!</h3>
+<%= form_for @booking do |f| %>
+  <div class="form-group">
+    <%= f.fields_for :passenger do |ff| %>
+    <div class="form-group">
+      <%= ff.label :first_name, "First name" %>
+      <%= ff.text_field :first_name %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :last_name, "Last name" %>
+      <%= ff.text_field :last_name %>
+    </div>
+   <% end %>
+  </div>
+<% end %>

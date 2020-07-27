@@ -10,7 +10,13 @@ class BookingsController < ApplicationController
   end
 
   def create
-
+    @flight = Flight.find(flight_id)
+    @booking = @flight.Bookings.create(booking_params)
+    if @booking.save 
+      redirect_to @booking
+    else
+      render "new"
+    end
   end
 
   private

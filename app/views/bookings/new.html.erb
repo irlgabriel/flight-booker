@@ -13,28 +13,30 @@
 </div>
 
 <h3 class="text-primary text-center">Passenger Details!</h3>
+
 <%= form_for  @booking do |f| %>
   <div class="form-group mx-auto" style="width: 33rem;">
+    <% @passengers.to_i.times do |no| %>
+      <h3 class="text-center text-warning"><%= "Passenger #{no + 1}"%></h3>
+      <%= f.fields_for :passenger do |ff| %>
+        <div class="form-group text-center">
+          <%= ff.label :first_name, "First name" %>
+          <%= ff.text_field :first_name, class:'form-control' %>
+        </div>
 
-    <%= f.fields_for :passenger do |ff| %>
-    <div class="form-group text-center">
-      <%= ff.label :first_name, "First name" %>
-      <%= ff.text_field :first_name, class:'form-control' %>
-    </div>
+        <div class="form-group text-center">
+          <%= ff.label :last_name, "Last name" %>
+          <%= ff.text_field :last_name, class:'form-control' %>
+        </div>
 
+        <div class="form-group text-center">
+          <%= ff.label :email, "Email" %>
+          <%= ff.text_field :email, class:'form-control' %>
+        </div>
+      <% end %>
+    <hr />
+    <% end %>
+  <%= f.submit :Book, value:"Book This Flight", class:"mx-auto btn btn-primary" %>
 
-    <div class="form-group text-center">
-      <%= ff.label :last_name, "Last name" %>
-      <%= ff.text_field :last_name, class:'form-control' %>
-    </div>
-
-    <div class="form-group text-center">
-      <%= ff.label :email, "Email" %>
-      <%= ff.text_field :email, class:'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= ff.submit %>
-    </div>
-   <% end %>
   </div>
 <% end %>

@@ -43,24 +43,26 @@
       <th>Departure Date</th>
       <th>Departure Hour</th>
       <th>Flight Duration</th>
-      <th>Picked?</th>
     </tr>
 
-      <% @available_flights.each do |flight| %>
       <%= form_with url: "/bookings/new", method: "get", local: true do |f| %>
-        <tr>
-          <td><%= flight.id %></td>
-          <td><%= flight.from_airport.code %></td>
-          <td><%= flight.to_airport.code %></td>
-          <td><%= flight.departure_time.strftime('%d/%m/%y') %>
-          <td><%= flight.departure_time.strftime('%H:%M')%></td>
-          <td><%= flight.travel_duration %></td>
-          <%= f.hidden_field :flight_id , value: flight.id %>
-          <%= f.hidden_field :passengers, value: params[:passengers] %>
-          <td><%= f.submit "Book this Flight",  class:"btn btn-success"%></td>
-        </tr>
+        <% @available_flights.each do |flight| %>
+          <tr>
+            <td><%= flight.id %></td>
+            <td><%= flight.from_airport.code %></td>
+            <td><%= flight.to_airport.code %></td>
+            <td><%= flight.departure_time.strftime('%d/%m/%y') %>
+            <td><%= flight.departure_time.strftime('%H:%M')%></td>
+            <td><%= flight.travel_duration %></td>
+          </tr>
+        <% end %>
+      <%= f.hidden_field :passengers, value: params[:passengers] %>
+      <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
+      <tr><%= f.submit "Book this Flight",  class:"btn btn-success"%></tr>
+
       <% end %>
-    <% end %>
+
+
   </table>
 
   <p><%= p params %></p>

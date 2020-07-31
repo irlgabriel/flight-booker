@@ -57,10 +57,10 @@
           <td><%= flight.travel_duration %></td>
           <%= f.hidden_field :flight_id , value: flight.id %>
           <%= f.hidden_field :passengers, value: params[:passengers] %>
-          <td><%= f.check_box :pick  %></td>
+          <td><%= f.check_box("flight")  %></td>
         </tr>
         <% end %>
-    <%= f.submit "book", value: "Book", name: nil, class: "btn btn-success" %>
+    <%= f.submit "booking", value: "Book", name: nil, class: "btn btn-success" %>
     <% end %>
   </table>
 

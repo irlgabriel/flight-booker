@@ -32,7 +32,7 @@
 
 <% if @available_flights.count >= 1 %>
 
-  <hr />
+  <hr class="my-5" />
 
   <h1 class="text-center text-primary">Available Flights: </h1>
   <table class="table table-striped mx-auto text-center">
@@ -43,23 +43,26 @@
       <th>Departure Date</th>
       <th>Departure Hour</th>
       <th>Flight Duration</th>
+      <th>Picked?</th>
     </tr>
-    <% @available_flights.each do |flight| %>
-    <tr>
-      <%= form_with url: "/bookings/new", method: "get", local: true do |f| %>
 
-      <td><%= flight.from_airport.code %></td>
-      <td><%= flight.to_airport.code %></td>
-      <td><%= flight.departure_time.strftime('%d/%m/%y') %>
-      <td><%= flight.departure_time.strftime('%H:%M')%></td>
-      <td><%= flight.travel_duration %></td>
-      <%= f.hidden_field :flight_id , value: flight.id %>
-      <%= f.hidden_field :passengers, value: params[:passengers] %>
-      <td><%= f.submit value: "Pick", name: nil, class: "btn btn-primary" %></td>
-      <% end %>
-    </tr>
-    <% end
-    %>
+    <%= form_with url: "/bookings/new", method: "get", local: true do |f| %>
+      <% @available_flights.each do |flight| %>
+        <tr>
+          <td><%= flight.id %></td>
+          <td><%= flight.from_airport.code %></td>
+          <td><%= flight.to_airport.code %></td>
+          <td><%= flight.departure_time.strftime('%d/%m/%y') %>
+          <td><%= flight.departure_time.strftime('%H:%M')%></td>
+          <td><%= flight.travel_duration %></td>
+          <%= f.hidden_field :flight_id , value: flight.id %>
+          <%= f.hidden_field :passengers, value: params[:passengers] %>
+          <td><%= f.check_box :pick  %></td>
+        </tr>
+        <% end %>
+    <%= f.submit "book", value: "Book", name: nil, class: "btn btn-primary" %>
+    <% end %>
   </table>
+
   <p><%= p params %></p>
 <% end %>

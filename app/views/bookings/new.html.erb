@@ -19,7 +19,7 @@
     <% @passengers.to_i.times do |no| %>
 
       <h3 class="text-center text-warning"><%= "Passenger #{no + 1}"%></h3>
-      <%= f.fields_for @booking.passengers.build do |ff| %>
+      <%= f.fields_for :passengers,  do |ff| %>
         <div class="form-group text-center">
           <%= ff.label :first_name, "First name" %>
           <%= ff.text_field :first_name, class:'form-control' %>
@@ -39,7 +39,7 @@
     <% end %>
 
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-  <%= f.submit :Book, value:"Book This Flight", class:"btn btn-primary" %>
+  <%= f.submit :Book, value:"Book This Flight", class:"btn btn-primary text-center mx-auto" %>
 
   </div>
 <% end %>

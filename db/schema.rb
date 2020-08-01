@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 2020_07_27_160308) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "travel_duration"
     t.datetime "departure_time"
-    t.integer "passengers"
+    t.integer "passengers_id"
     t.index ["from_airport_id"], name: "index_flights_on_from_airport_id"
+    t.index ["passengers_id"], name: "index_flights_on_passengers_id"
     t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
   end
 
@@ -45,8 +46,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_160308) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "booking_id"
-    t.index ["booking_id"], name: "index_passengers_on_booking_id"
   end
 
 end

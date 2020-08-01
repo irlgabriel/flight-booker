@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id)
     @to = Airport.find(@flight.to_airport_id)
     @passengers = params[:passengers]
-    @flight.passengers = @passengers
     @booking = @flight.bookings.new
   end
 
@@ -22,7 +21,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:passengers, :flight_id)
+    params.require(:booking).permit(:flight_id, passengers_id: [] )
   end
 
 end

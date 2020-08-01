@@ -1,32 +1,36 @@
 
 <div class="container mt-5">
-  <h2 class="text-center my-5">Search Flights</h2>
+  <h2 class="text-center my-5">
+    Search Flights
+  </h2>
   <%= form_with(url: "/flights", method: "get", local: true, class: "") do |f| %>
-  <div class="form-group">
-    <div class="form-group">
-      <%= f.label :to, class: "mr-4" %>
-      <%= f.collection_select(:from_airport_id, @airports, :id, :code) %>
-    </div>
+    <div class="form-group container mx-auto">
+    
+      <div class="form-group">
+        <%= f.label :to, class: "mr-3" %>
+        <%= f.collection_select(:from_airport_id, @airports, :id, :code) %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :from %>
-      <%= f.collection_select(:to_airport_id, @airports, :id, :code) %>
-    </div>
+      <div class="form-group">
+        <%= f.label :from %>
+        <%= f.collection_select(:to_airport_id, @airports, :id, :code) %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :no_of_passengers, "Passengers" %>
-      <%= f.select(:passengers, [ [1,1], [2,2], [3,3], [4,4] ]) %>
-    </div>
+      <div class="form-group">
+        <%= f.label :no_of_passengers, "Passengers" %>
+        <%= f.select(:passengers, [ ['One',1], ['Two',2], ['Three',3], ['Four',4] ]) %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :departure_date, "Departure Date" %>
-      <%= select_date(Time.now) %>
-    </div>
+      <div class="form-group">
+        <%= f.label :departure_time, "Departure Time" %>
+        <%= date_select("flight", "departure_time") %>
+      </div>
 
-    <div class="form-group">
-      <%= f.submit value: "Search", name: nil, class: "btn btn-primary" %>
+      <div class="form-group">
+        <%= f.submit value: "Search", name: nil, class: "btn btn-primary" %>
+      </div>
+
     </div>
-  </div>
   <% end %>
 </div>
 
@@ -36,15 +40,17 @@
 
   <h1 class="text-center text-primary">Available Flights: </h1>
   <table class="table table-striped mx-auto text-center">
-    <tr>
-      <th>ID</th>
-      <th>FROM</th>
-      <th>TO</th>
-      <th>Departure Date</th>
-      <th>Departure Hour</th>
-      <th>Flight Duration</th>
-    </tr>
-
+    <thead>
+      <tr>  
+        <th>ID</th>
+        <th>FROM</th>
+        <th>TO</th>
+        <th>Departure Date</th>
+        <th>Departure Hour</th>
+        <th>Flight Duration</th>
+      </tr>
+    </thead>
+    <tbody>
       <%= form_with url: "/bookings/new", method: "get", local: true do |f| %>
         <% @available_flights.each do |flight| %>
           <tr>
@@ -57,13 +63,14 @@
           </tr>
         <% end %>
       <%= f.hidden_field :passengers, value: params[:passengers] %>
-      <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
-      <tr><%= f.submit "Book this Flight",  class:"btn btn-success"%></tr>
-
-      <% end %>
-
-
+    </tbody>
   </table>
+  <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
+  <%= f.submit "Book this Flight",  class:"btn btn-success"%>
+  <% end %>
+
 
   <p><%= p params %></p>
+  <% else %> <!-- @available_flights == 0 -->
+    
 <% end %>

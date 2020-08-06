@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:flight_id])
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
-    @passengers = params[:passengers].to_i
+    @no_of_passengers = params[:passengers].to_i
     @booking = @flight.bookings.new
   end
 
@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = @flight.bookings.create(booking_params)
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
+    @passengers = Passenger.new
     if @booking.save 
       redirect_to bookings_path
     else

@@ -16,11 +16,11 @@
 
 <%= form_for @booking do |f| %>
   <div class="form-group mx-auto" style="width: 33rem;">
-    <% @passengers.times do |no| %>
+    <% @no_of_passengers.times do |no| %>
 
       <h3 class="text-center text-warning"><%= "Passenger #{no + 1}"%></h3>
 
-      <%= f.fields_for :passenger do |ff| %>
+      <%= f.fields_for :passengers do |ff| %>
 
         <div class="form-group text-center">
           <%= ff.label :first_name, "First name" %>

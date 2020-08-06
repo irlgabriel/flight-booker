@@ -6,7 +6,7 @@
     <h4 class="card-title text-primary"><strong>Odin Airways!</strong></h4>
     <h5 class="card-subtitle mb-2 text-muted">FROM: <strong><%= link_to @from, '' %></strong></h5>
     <h5 class="card-subtitle text-muted">TO : <strong><%= link_to @to, '' %></strong></h5>
-    <p class="card-text mt-3">Departure time: <strong class="text-primary"><%= @flight.departure_time.strftime('%d/%m/%Y') %></strong></p>
+    <p class="card-text mt-3">Departure time: <strong class="text-primary"><%= @flight.departure_time.strftime('%d/%m/%Y %H:%M') %></strong></p>
     <p class="card-text">Travel duration: <strong class="text-primary"><%= @flight.travel_duration %></strong></p>
     <p class="card-text">No. of passengers: <strong class="text-primary"><%= params[:passengers] %></strong></p>
   </div>
@@ -19,7 +19,7 @@
     <% @passengers.times do |no| %>
 
       <h3 class="text-center text-warning"><%= "Passenger #{no + 1}"%></h3>
-      <%= f.fields_for :passengers  do |ff| %>
+      <%= f.fields_for :passenger  do |ff| %>
         <div class="form-group text-center">
           <%= ff.label :first_name, "First name" %>
           <%= ff.text_field :first_name, class:'form-control' %>

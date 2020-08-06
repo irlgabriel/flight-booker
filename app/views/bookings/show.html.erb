@@ -1,0 +1,30 @@
+
+<div class="container text-center">
+  <h1 text-primary>Your booking</h1>
+
+  <hr class="my-2" />
+
+  <h2>Flight Details: </h2>
+
+  <hr class="my-2" />
+
+  <h3 class='mb-2'>Flight number: <%= @flight.id %></h3>
+  <h3 class='mb-2'>FROM: <%= @from.code %>
+  <h3 class='mb-2'>TO: <%= @to.code %>
+  <h3 class='mb-2'>Departure Time: <%= @flight.departure_time.strftime('%d/%m/%Y %H:%M') %></h3>
+  <h3>Travel duration: <%= @flight.travel_duration %></h3>
+
+  <hr class="my-2" />
+
+  <h2>Passengers Information: </h2>
+
+
+  <% @booking.passengers.each do |passenger| %>
+
+  <h3 class='mb-2'>First Name: <%= passenger.first_name %> </h3>
+  <h3 class='mb-2'>Last Name: <%= passenger.last_name %> </h3>
+  <h3 class='mb-2'>Email: <%= passenger.email %> </h3>
+
+  <hr class="my-2" />
+  <% end %>
+</div>

@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
     if @booking.save 
-      redirect_to @bookings #index
+      redirect_to bookings_path
     else
       render "new"
     end
@@ -23,6 +23,13 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
 
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @flight = Flight.find(@booking.flight_id)
+    @to = Airport.find(@flight.to_airport_id)
+    @from = Airport.find(@flight.from_airport_id)
   end
 
   private

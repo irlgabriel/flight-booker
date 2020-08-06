@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = @flight.bookings.create(booking_params)
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
+    byebug
     if @booking.save 
       redirect_to bookings_path
     else
@@ -35,7 +36,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id, passengers_id: [] )
+    params.require(:booking).permit(:flight_id, :passenger)
   end
 
 end

@@ -1,6 +1,6 @@
 <h1 class="text-center text-primary mt-4">Current Bookings(<%= @bookings.count %>): </h1>
 <% @bookings.each do |booking| %>
-  <div class="card mx-auto my-3 px-3 py-3" style="width: 24rem;">
+  <div class="card mx-auto my-3 px-3 py-3 text-center" style="width: 24rem;">
     <h4 class="card-title">Odin Airways</h4>
     <h5 class="card-subtitle mt-1">FROM: <strong><%= Airport.find(booking.flight.from_airport_id).code%></strong>  </h5>
     <h5 class="card-subtitle mt-1">TO : <strong><%= Airport.find(booking.flight.to_airport_id).code %></strong></h5>

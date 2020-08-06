@@ -17,7 +17,7 @@
 <%= form_for @booking do |f| %>
   <div class="form-group mx-auto" style="width: 33rem;">
     <% @no_of_passengers.times do |no| %>
-      <h2 class="my-2">Passenger <%= no + 1%></h2>
+      <h2 class="my-2 text-center text-danger">Passenger <%= no + 1%></h2>
       <%= f.fields_for :passengers, @passengers do |ff| %>
 
         <div class="form-group text-center">

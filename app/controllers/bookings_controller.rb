@@ -7,7 +7,6 @@ class BookingsController < ApplicationController
     @no_of_passengers = params[:passengers].to_i
     @booking = @flight.bookings.new
     @passengers = Passenger.new
-    #byebug
 
   end
 

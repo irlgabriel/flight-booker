@@ -4,11 +4,11 @@
 <div class="card mb-3 mx-auto" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title text-primary"><strong>Odin Airways!</strong></h4>
-    <h5 class="card-subtitle mb-2 text-muted">FROM: <strong><%= link_to @from.code, '' %></strong></h5>
-    <h5 class="card-subtitle text-muted">TO : <strong><%= link_to @to.code, '' %></strong></h5>
+    <h5 class="card-subtitle mb-2 text-muted">FROM: <strong><%= link_to @from, '' %></strong></h5>
+    <h5 class="card-subtitle text-muted">TO : <strong><%= link_to @to, '' %></strong></h5>
     <p class="card-text mt-3">Departure time: <strong class="text-primary"><%= @flight.departure_time.strftime('%d/%m/%Y') %></strong></p>
     <p class="card-text">Travel duration: <strong class="text-primary"><%= @flight.travel_duration %></strong></p>
-    <p class="card-text">No. of passengers: <strong class="text-primary"><%= @booking.passenger %></strong></p>
+    <p class="card-text">No. of passengers: <strong class="text-primary"><%= params[:passengers] %></strong></p>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
 
 <%= form_for @booking do |f| %>
   <div class="form-group mx-auto" style="width: 33rem;">
-    <% @passengers.to_i.times do |no| %>
+    <% @passengers.times do |no| %>
 
       <h3 class="text-center text-warning"><%= "Passenger #{no + 1}"%></h3>
       <%= f.fields_for :passengers  do |ff| %>
@@ -43,4 +43,3 @@
 
   </div>
 <% end %>
-<% byebug %>

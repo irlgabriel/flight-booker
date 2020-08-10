@@ -5,7 +5,9 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
     @no_of_passengers = params[:passengers].to_i
+    
     @booking = @flight.bookings.new
+    @booking.user_id = current_user.id
     @passengers = Passenger.new
 
   end
@@ -16,7 +18,14 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id).code
     @to = Airport.find(@flight.to_airport_id).code
     @passengers = Passenger.new
+    @booking.user_id = current_user.id
+
     if @booking.save 
+      #needed because I cant figure proper associations
+      @booking.passengers.each do |passenger| 
+        passenger.booking_id = @booking.id
+      end
+
       redirect_to bookings_path
     else
       render "new"

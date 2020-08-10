@@ -21,7 +21,7 @@
   		</div>
   	<% end %>
     <div class="px-4 bg-dark text-center py-2 d-flex justify-content-between align-items-center">
-      <% if !current_user %> 
+      <% if !user_signed_in? %> 
         <div style="width: 22%;"></div>
         <%= link_to 'Odin Airways', root_path, class: "h2 text-warning" %>
         <div>

@@ -66,12 +66,12 @@
       <%= f.hidden_field :passengers, value: params[:passengers] %>
     </tbody>
   </table>
-  <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
-  <%= f.submit "Book this Flight",  class:"btn btn-success"%>
+  <div class="wrapper mx-auto d-inline-block">
+    <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
+  </div>
+  <%= f.submit "Book this Flight",  class:" text-center mx-auto d-block btn btn-success"%>
   <% end %>
 
 
-  <p><%= p params %></p>
-  <% else %> <!-- @available_flights == 0 -->
     
 <% end %>

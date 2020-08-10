@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
 
+  
+
   def new
     @flight = Flight.find(params[:flight_id])
     @from = Airport.find(@flight.from_airport_id).code
@@ -22,6 +24,8 @@ class BookingsController < ApplicationController
 
     if @booking.save 
       #needed because I cant figure proper associations
+      #also put it here because unless it is saved,
+      #@booking.id is nil!
       @booking.passengers.each do |passenger| 
         passenger.booking_id = @booking.id
       end
@@ -43,10 +47,23 @@ class BookingsController < ApplicationController
     @from = Airport.find(@flight.from_airport_id)
   end
 
+  def user_bookings
+    if current_user
+      user_bookings = current_user.bookings
+      
+    else
+      redirect_to new_user_session_path
+      flash[:notice] = "You need to be logged in to see your bookings!"
+    end
+    
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:flight_id, passengers_attributes: [ :first_name, :last_name, :email ])
   end
+
+  
 
 end

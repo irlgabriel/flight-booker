@@ -18,7 +18,7 @@
   <div class="form-group mx-auto" style="width: 33rem;">
     <% #byebug %>
 
-    <% #@no_of_passengers.times do |no| %>
+    <% @no_of_passengers.times do |no| %>
       <h2 class="my-2 text-center text-danger">Passenger </h2>
       <%= f.fields_for :passengers, @passengers do |ff| %>
 
@@ -41,7 +41,7 @@
       <hr class="my-5" />
 
       <% end %>
-    <% #end %>
+    <% end %>
 
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
   <%= f.submit :Book, value:"Book This Flight", class:"btn btn-primary text-center mx-auto" %>

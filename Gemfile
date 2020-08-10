@@ -29,9 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Bootstrap gem
 gem 'bootstrap', '~> 4.5'
-
-gem 'simple_form', '~> 5.0', '>= 5.0.2'
-
+# User authentication
 gem 'devise', '~> 4.2'
 
 

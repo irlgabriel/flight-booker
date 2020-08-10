@@ -13,17 +13,17 @@
 
       <div class="form-group">
         <%= f.label :from %>
-        <%= f.collection_select(:to_airport_id, @airports, :id, :code) %>
+        <%= f.collection_select(:to_airport_id, @airports, :id, :code, html_options: {class: "form-control"}) %>
       </div>
 
       <div class="form-group">
         <%= f.label :no_of_passengers, "Passengers" %>
-        <%= f.select(:passengers, [ ['One',1], ['Two',2], ['Three',3], ['Four',4] ]) %>
+        <%= f.select(:passengers, [ ['One',1], ['Two',2], ['Three',3], ['Four',4] ], html_options: {class: "form-control"}) %>
       </div>
 
       <div class="form-group">
         <%= f.label :departure_time, "Departure Time" %>
-        <%= date_select("flight", "departure_time") %>
+        <%= date_select("flight", "departure_time", html_options: {class: "form-control"}) %>
       </div>
 
       <div class="form-group">
@@ -37,7 +37,7 @@
 
 <% if @available_flights.count >= 1 %>
 
-  <hr class="my-5" />
+  <hr class="mt-5" />
 
   <h1 class="text-center text-primary">Available Flights: </h1>
   <table class="table table-striped mx-auto text-center">
@@ -67,7 +67,7 @@
     </tbody>
   </table>
   <div class="wrapper mx-auto d-inline-block">
-    <%= f.collection_select(:flight_id, @available_flights, :id, :id)%>
+    <%= f.collection_select(:flight_id, @available_flights, :id, :id, html_options: {class: "form-control"})%>
   </div>
   <%= f.submit "Book this Flight",  class:" text-center mx-auto d-block btn btn-success"%>
   <% end %>

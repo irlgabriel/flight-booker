@@ -38,6 +38,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
+    render 'index', locals: {bookings: @bookings}
   end
 
   def show
@@ -45,11 +46,12 @@ class BookingsController < ApplicationController
     @flight = Flight.find(@booking.flight_id)
     @to = Airport.find(@flight.to_airport_id)
     @from = Airport.find(@flight.from_airport_id)
+    @user_booking = User.find(@booking.user_id)
   end
 
   def user_bookings
     if current_user
-      user_bookings = current_user.bookings
+      @user_bookings = current_user.bookings
       
     else
       redirect_to new_user_session_path

@@ -32,7 +32,7 @@
       <% else %>
         <div style="width: 22%;"></div>
         <%= link_to 'Odin Airways', root_path, class: "h2 text-warning" %>
-        <%= link_to 'Sign out', destroy_user_session_path, class:"h4 text-danger"%>
+        <%= link_to 'Sign out', destroy_session_path(current_user), method: :delete, class:"h4 text-danger"%>
       <% end %>
       
     </div>

@@ -32,6 +32,8 @@ gem 'bootstrap', '~> 4.5'
 # User authentication
 gem 'devise', '~> 4.2'
 
+gem 'simple_form', '~> 5.0', '>= 5.0.2'
+
 
 
 group :development, :test do

@@ -34,6 +34,8 @@ gem 'devise', '~> 4.2'
 
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 
+gem 'letter_opener', '~> 1.7'
+
 
 
 group :development, :test do

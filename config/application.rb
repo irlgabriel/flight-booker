@@ -15,8 +15,11 @@ module FlightBooker
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+
+    #default host for sendgrid?
+    config.action_mailer.default_url_options = { host: 'https://polar-oasis-39073.herokuapp.com' }
   end
 end
 
 
-config.action_mailer.default_url_options = { host: 'https://polar-oasis-39073.herokuapp.com' }

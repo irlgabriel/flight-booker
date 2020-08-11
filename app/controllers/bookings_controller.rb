@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
       @booking.passengers.each do |passenger| 
         passenger.booking_id = @booking.id
       end
-
+      PassengerMailer.with(booking: @booking, user: current_user).thank_you_email.deliver_now
       redirect_to bookings_path
     else
       render "new"
@@ -58,6 +58,10 @@ class BookingsController < ApplicationController
       flash[:notice] = "You need to be logged in to see your bookings!"
     end
     
+  end
+
+  def destroy
+    @booking.destroy
   end
 
   private

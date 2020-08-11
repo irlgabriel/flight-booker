@@ -1,5 +1,7 @@
 class FlightsController < ApplicationController
 
+  
+
   def index
     @airports = Airport.all
     if params[:to_airport_id] and params[:from_airport_id]

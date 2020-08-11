@@ -9,6 +9,7 @@
     <h5 class="card-subtitle text-danger">DATE: <strong><%= Flight.find(booking.flight_id).departure_time.strftime('%d/%m/%Y %H:%M') %></strong></h5>
     <h5 class="card-subtitle mt-1">FROM: <strong><%= Airport.find(booking.flight.from_airport_id).code%></strong>  </h5>
     <h5 class="card-subtitle mt-1">TO : <strong><%= Airport.find(booking.flight.to_airport_id).code %></strong></h5>
-    <p class="card-text h3"><%= link_to 'See Booking', booking_path(booking), class:"text-warning" %> </p>
+    <p class="card-text h3"><%= link_to 'See Booking', booking_path(booking), class:"btn btn-warning" %> </p>
+    
   </div>
 <% end %>

@@ -1,6 +1,5 @@
 
 This project is part of The Odin Project(https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms?ref=lnav)
 
-Things I still need to figure out: 
-  # (FIXED!!!!!!!1)fields_for for Passengers within Bookings' form_for doesn't show (when using `f.fields_for :passengers`)
-  
+
+Project is deployed to Heroku(https://polar-oasis-39073.herokuapp.com/bookingshttps://polar-oasis-39073.herokuapp.com/bookings)

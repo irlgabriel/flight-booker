@@ -17,3 +17,6 @@ module FlightBooker
     # the framework and any gems in your application.
   end
 end
+
+
+config.action_mailer.default_url_options = { host: 'https://polar-oasis-39073.herokuapp.com' }

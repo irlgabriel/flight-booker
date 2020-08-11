@@ -23,7 +23,7 @@
 
       <div class="form-group">
       <%= f.label :departure_time, "Departure Time" %>
-      <%= date_select "flight", "departure_time", :selected => @date %>
+      <%= date_select "flight", "departure_time", :default => Date.today, :selected => @date %>
       </div>
 
       <div class="form-group">

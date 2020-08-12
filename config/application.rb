@@ -18,7 +18,7 @@ module FlightBooker
 
 
     #default host for sendgrid?
-    config.action_mailer.default_url_options = { host: 'https://polar-oasis-39073.herokuapp.com' }
+    config.action_mailer.default_url_options = { host: 'https://still-ocean-64271.herokuapp.com/' }
   end
 end
 
